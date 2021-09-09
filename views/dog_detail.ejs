@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="detail">
+        <h1><%= dog.name %></h1>
+        <img class="avatar" src="https://imgur.com/M2Q1Zv2.jpg" alt="Breeder Avatar">
+        <div class="words">
+  
+          <div class="content">
+            <p><strong>Breed</strong>: <a href="<%= dog.breed.url %>"><%= dog.breed.name %></a></p>
+            <p><strong>Breeder</strong>: <a href="<%= dog.breeder.url %>"><%= dog.breeder.name %></a></p>
+            <p><strong>Location</strong>: <a href="<%= dog.location.url %>"><%= dog.location.name %></a></p>
+            <p><strong>Description</strong>: <%= dog.description %></p>
+            <p><strong>Temperment</strong>: <%= dog.temperment %></p>
+            <p><strong>Neutered/Spayed</strong>: <%= dog.neuteredSpayed ? "Yes" : "No" %></p>
+            <p><strong>Age</strong>: <%= dog.age %> Year(s) of age</p>
+            <p><strong>Sex</strong>: <%= dog.sex %></p>
+            <p><strong>Adoption Fee</strong>: $<%= dog.adoptionFee %></p>
+          </div>
+          <hr>
+          <div class="adopt-btn">
+            <a href="<%= dog.url + '/adopt' %>">
+              <i class="fas fa-paw fa-10x"></i>
+              <p>Adopt Me!</p>
+            </a>
+          </div>
+          <div class="delete-update">
+            <a href="<%= dog.url + '/delete' %>">Delete Dog</a>
+            <a href="<%= dog.url + '/update' %>">Update Dog</a>
+          </div>
+        </div>
+      </div>
+
+
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

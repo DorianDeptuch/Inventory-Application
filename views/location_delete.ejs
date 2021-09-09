@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="delete">
+        <h1><%= title %></h1>
+        <div class="content">
+         <% if (location_dogs.length > 0){ %>
+          <strong>Ensure the following dogs are adopted from <%= location.name %> before deleting this location:</strong>
+          <div class="dogs_to_delete">
+            <% location_dogs.forEach(dog => { %>
+              <a class="li_container" href="<%= dog.url %>">
+                <div class="circle"></div>
+                <p><%= dog.name %></p>
+              </a>
+            <% }) %>
+          </div>
+         <% } else { %>
+          <div class="delete_card">
+            <a href="<%= location.url %>">
+              <img src="https://imgur.com/GEfMuTp.jpg" alt="location Avatar">
+            </a>
+            <a href="<%= location.url %>">
+              <h4><%= location.name %></h4>
+            </a>
+            <p><%= location.description %></p>
+          </div>
+          <div class="strong_div">
+            <strong>Do you really want to delete this location?</strong>
+          </div>
+          <form action="" method="POST">
+            <input type="hidden" id="locationid" name="locationid" required="true" value='<%= location._id %>'>
+            <button type="submit">DELETE</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

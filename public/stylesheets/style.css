@@ -1,8 +1,694 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* ██████╗███████╗███████╗    ██████╗ ███████╗███████╗███████╗████████╗███████╗
+  ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝██╔════╝
+  ██║     ███████╗███████╗    ██████╔╝█████╗  ███████╗█████╗     ██║   ███████╗
+  ██║     ╚════██║╚════██║    ██╔══██╗██╔══╝  ╚════██║██╔══╝     ██║   ╚════██║
+  ╚██████╗███████║███████║    ██║  ██║███████╗███████║███████╗   ██║   ███████║ 
+   ╚═════╝╚══════╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚══════╝*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  position: relative;
+  font-family: "Signika", sans-serif;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* 
+font-family: 'Acme', sans-serif;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Signika', sans-serif; */
+
+h1 {
+  text-align: center;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* 
+███╗   ██╗ █████╗ ██╗   ██╗
+████╗  ██║██╔══██╗██║   ██║
+██╔██╗ ██║███████║██║   ██║
+██║╚██╗██║██╔══██║╚██╗ ██╔╝
+██║ ╚████║██║  ██║ ╚████╔╝ 
+╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  
+*/
+
+.nav {
+  width: 100%;
+  background-color: #ddd;
+  padding: 1rem 2rem;
+}
+.nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav ul > * {
+  padding-right: 2rem;
+}
+
+.home-link {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+██╗███╗   ██╗██████╗ ███████╗██╗  ██╗
+██║████╗  ██║██╔══██╗██╔════╝╚██╗██╔╝
+██║██╔██╗ ██║██║  ██║█████╗   ╚███╔╝ 
+██║██║╚██╗██║██║  ██║██╔══╝   ██╔██╗ 
+██║██║ ╚████║██████╔╝███████╗██╔╝ ██╗
+╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+                                     
+*/
+
+.index {
+  width: 80%;
+  margin: 2rem 0;
+}
+
+.index > h1 {
+  margin-bottom: 2rem;
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 0.025em 0.025em #bbb, 0.05em 0.05em #888, 0.075em 0.075em #444,
+    0.1em 0.1em #000;
+  text-decoration: underline;
+}
+.index h3 {
+  text-align: center;
+}
+
+.main_description {
+  border-radius: 10px;
+  background-color: #ccc;
+  padding: 1rem;
+}
+
+.category_container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* margin: 10rem 0; */
+  padding: 10rem 0;
+  width: 100%;
+  background-color: #fff;
+  background-image: url(https://cdn.pixabay.com/photo/2015/01/07/16/37/wood-591631_960_720.jpg);
+  overflow: hidden;
+}
+
+.category_slider {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  width: 100%;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.category_slider:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.category_slider img {
+  aspect-ratio: 16 / 9;
+  height: 300px;
+  width: 450px;
+}
+
+.slider_text {
+  height: 100%;
+  width: 25%;
+  background-color: #ccc;
+  text-align: center;
+  padding: 1rem 1rem;
+  border-top: 5px solid #000;
+  border-bottom: 5px solid #000;
+}
+
+.slider_img {
+  border-top: 5px solid #000;
+  border-bottom: 5px solid #000;
+}
+
+.slider_text h3 {
+  text-decoration: underline;
+}
+
+.even .slider_text p {
+  text-align: left;
+}
+
+.odd .slider_text p {
+  text-align: right;
+}
+
+.slider_count {
+  background-color: #ccc;
+  height: 100%;
+  width: 10%;
+  text-align: center;
+  padding: 7.9rem 0;
+  border: 5px solid #000;
+}
+
+.odd .slider_count {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.even .slider_count {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.even {
+  transform: translateX(-25%);
+  transition: transform 0.5s ease-out;
+}
+.odd {
+  transform: translateX(25%);
+  transition: transform 0.5s ease-out;
+}
+
+.even:hover {
+  transform: translateX(0%);
+}
+.odd:hover {
+  transform: translateX(0%);
+}
+
+.custom-shape-divider-top-1630987315 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1630987315 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 98px;
+}
+
+.custom-shape-divider-top-1630987315 .shape-fill {
+  fill: #888;
+}
+/* 
+██╗     ██╗███████╗████████╗
+██║     ██║██╔════╝╚══██╔══╝
+██║     ██║███████╗   ██║   
+██║     ██║╚════██║   ██║   
+███████╗██║███████║   ██║   
+╚══════╝╚═╝╚══════╝   ╚═╝   
+*/
+
+.list {
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+
+  width: 90%;
+}
+
+.list_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list_container > li {
+  width: 30%;
+  margin: 1rem;
+}
+
+.li_card {
+  background-color: #aaa;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* -webkit-box-shadow: 5px 5px 0px 0px #bbb, 10px 10px 0px 0px #888,
+    15px 15px 0px 0px #444, 5px 5px 15px 5px rgba(0, 0, 0, 0),
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 5px 5px 0px 0px #bbb, 10px 10px 0px 0px #888,
+    15px 15px 0px 0px #444, 5px 5px 15px 5px rgba(0, 0, 0, 0),
+    5px 5px 15px 5px rgba(0, 0, 0, 0); */
+}
+
+.li_card p {
+  font-size: 1.2rem;
+}
+
+.li_card a:first-child {
+  margin-bottom: 1rem;
+}
+
+.li_card > a > img {
+  width: 300px;
+  height: 250px;
+}
+/* 
+███████╗ ██████╗ ██████╗ ███╗   ███╗
+██╔════╝██╔═══██╗██╔══██╗████╗ ████║
+█████╗  ██║   ██║██████╔╝██╔████╔██║
+██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║
+██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║
+╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
+                                    
+*/
+.form {
+  background-color: #eee;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  padding: 0.5rem 0;
+}
+
+form > textarea {
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 10rem;
+  min-height: 2rem;
+}
+
+form > button {
+  width: 40%;
+  align-self: center;
+  margin: 2rem 0;
+  cursor: pointer;
+}
+
+/* 
+██████╗ ███████╗████████╗ █████╗ ██╗██╗     
+██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║     
+██║  ██║█████╗     ██║   ███████║██║██║     
+██║  ██║██╔══╝     ██║   ██╔══██║██║██║     
+██████╔╝███████╗   ██║   ██║  ██║██║███████╗
+*/
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #888;
+}
+
+.avatar {
+  margin: 0 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.detail {
+  padding: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #aaa;
+  border-radius: 10px;
+}
+
+.words {
+  margin: 1rem;
+  background-color: #eee;
+  background: linear-gradient(
+    180deg,
+    rgba(238, 238, 238, 1) 90%,
+    rgba(170, 170, 170, 1) 100%
+  );
+}
+
+.detail > h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 3rem;
+  letter-spacing: 0.25rem;
+}
+
+.content,
+.available {
+  /* padding: 1rem 0; */
+  padding: 1rem;
+}
+
+.content > p {
+  padding: 0.5rem;
+}
+
+.content > p:nth-child(even) {
+  background-color: #ccc;
+}
+
+.delete-update {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.delete-update > a {
+  padding: 1rem 0;
+  /* border: 1px solid black; */
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px 2px black;
+}
+
+.delete-update > a:first-child {
+  background-color: salmon;
+  border-bottom-left-radius: 10px;
+}
+.delete-update > a:last-child {
+  background-color: cornflowerblue;
+  border-bottom-right-radius: 10px;
+
+  /* background-color: lightskyblue; */
+}
+
+.available .avatar {
+  border: 1px solid green;
+  /* margin: 0 auto; */
+}
+
+.available ul {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.available ul li {
+  padding: 0 1rem;
+}
+.li_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  height: 100px;
+  width: 100px;
+  background-color: orange;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.adopt-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.adopt-btn a {
+  position: relative;
+  margin: 2rem;
+}
+.adopt-btn a i {
+  color: black;
+  transition: text-shadow 0.5s;
+}
+
+.adopt-btn a i:hover {
+  text-shadow: 5px 5px 5px green, 5px -5px 5px green, -5px 5px 5px green,
+    -5px -5px 5px green;
+}
+
+.adopt-btn a p {
+  position: absolute;
+  color: white;
+  top: 65%;
+  left: 25%;
+  font-size: 1.2rem;
+}
+
+/* 
+██████╗ ███████╗██╗     ███████╗████████╗███████╗
+██╔══██╗██╔════╝██║     ██╔════╝╚══██╔══╝██╔════╝
+██║  ██║█████╗  ██║     █████╗     ██║   █████╗  
+██║  ██║██╔══╝  ██║     ██╔══╝     ██║   ██╔══╝  
+██████╔╝███████╗███████╗███████╗   ██║   ███████╗
+╚═════╝ ╚══════╝╚══════╝╚══════╝   ╚═╝   ╚══════╝
+                                                 
+*/
+
+.delete {
+  padding: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaa;
+  border-radius: 10px;
+}
+
+.delete .strong_div {
+  padding-top: 2rem;
+  align-self: center;
+  text-align: center;
+  /* display: inline-block; */
+}
+.delete_card img {
+  height: 250px;
+  width: 300px;
+}
+
+.delete_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.delete h4 {
+  font-size: 1.5rem;
+}
+
+.delete form {
+  width: 100%;
+}
+
+.delete button {
+  width: 50%;
+  color: red;
+  background-color: salmon;
+  border: 1px solid red;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.dogs_to_delete {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+
+.dogs_to_delete > a {
+  margin: 0 1rem;
+}
+
+/* 
+ █████╗ ██████╗  ██████╗ ██████╗ ████████╗
+██╔══██╗██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝
+███████║██║  ██║██║   ██║██████╔╝   ██║   
+██╔══██║██║  ██║██║   ██║██╔═══╝    ██║   
+██║  ██║██████╔╝╚██████╔╝██║        ██║   
+╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝        ╚═╝   
+                                          
+*/
+.adopt {
+  padding: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #aaa;
+  border-radius: 10px;
+}
+
+.adopt .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adopt button {
+  background-color: rgb(103, 192, 142);
+  color: green;
+  border: 1px solid green;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.payment-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.adopted_wrapper .adopt {
+  height: 90vh;
+}
+
+.adopted_container {
+  position: relative;
+}
+
+.adopted_container i,
+.adopted_container h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 0, 0, 0.8);
+  animation: growHeart 5s linear;
+}
+
+.adopted_container h4 {
+  animation: growText 5s linear;
+  color: black;
+  transform: scale(0.01);
+}
+
+@keyframes growHeart {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(150);
+  }
+}
+@keyframes growText {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(5);
+  }
+}
+
+.dog_adopted {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+/* 
+███████╗ ██████╗  ██████╗ ████████╗███████╗██████╗ 
+██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+█████╗  ██║   ██║██║   ██║   ██║   █████╗  ██████╔╝
+██╔══╝  ██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗
+██║     ╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║
+╚═╝      ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+.footer {
+  background: #ddd;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 2rem;
 }

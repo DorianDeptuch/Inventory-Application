@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="adopt">
+        <h1><%= dog.name %></h1>
+        <div class="content">
+          <h2>We're so happy you've chosen to adopt <%= dog.name %> from <%= dog.breeder.name %> in <%= dog.location.name %></h2>
+          <hr>
+          <h3>We hope <%= dog.name %> is the perfect match for your family</h3>
+          <h4>Family Friends Forever thanks you!</h4>
+          <div class="payment-container">
+            <h4>Subtotal: $<%= dog.adoptionFee %></h4>
+            <!-- <form action="" method="POST">
+              <input type="hidden" id="dogid" name="dogid" required="true" value='<%= dog._id %>'> -->
+              <!-- <a href="<%= dog.url + '/adoption_complete' %>">test </a> -->
+                <button type="submit">Pay $<%= dog.adoptionFee %></button>
+              <!-- </a> -->
+            <!-- </form> -->
+          </div>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="detail">
+        <h1><%= title %></h1>
+        <div class="form">
+          <form action="" method="POST">
+            <label for="name">Breed Name</label>
+            <input type="text" name="name" id="name">
+            <label for="size">Size</label>
+            <input type="text" name="size" id="size">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description"></textarea>
+            <button>Submit</button>
+          </form>
+          <ul>
+            <% if (errors){ %>
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

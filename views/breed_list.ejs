@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="list">
+        <h1><%= title %></h1>
+        <div class="content">
+          <ul class="list_container">
+            <% if (breed_list.length > 0) { %>
+            <% breed_list.sort(function(a,b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return(textA < textB) ? -1 : (textA > textB) ? 1 : 0;}) %>
+            <% breed_list.forEach(breed => { %>
+            <li>
+              <div class="li_card">
+                <a href="<%= breed.url %>">
+                  <img src="https://imgur.com/iyAuIuz.jpg" alt="Breeder Avatar Card">
+                </a>
+                <a href="<%= breed.url %>">
+                  <p><%= breed.name %></p>
+                </a>
+              </div>
+            </li>
+            <% }) %> <% } else { %>
+            <p>
+              There are no breeds available right now. Check again soon!
+            </p>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

@@ -10,6 +10,7 @@ var BreedSchema = new Schema({
     enum: ["Small", "Medium", "Large", "Extra-Large"],
   },
   description: { type: String, required: true, minLength: 1, maxLength: 1700 },
+  photoURL: { type: String },
 });
 
 BreedSchema.virtual("url").get(function () {

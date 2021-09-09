@@ -36,13 +36,15 @@ function breederCreate(
   location,
   specialty,
   description,
+  photoURL,
   cb
 ) {
   breederdetail = {
-    name: name,
-    location: location,
-    specialty: specialty,
-    description: description,
+    name,
+    location,
+    specialty,
+    description,
+    photoURL,
   };
   if (established != false) breederdetail.established = established;
 
@@ -146,6 +148,7 @@ function createBreeders(cb) {
           locations[0],
           "Pet",
           "A Southern California Based Dog Breeder That Provides The Very Best Pets To Dedicated Dog Owners Throughout The US And Beyond. ",
+          "",
           callback
         );
       },
@@ -156,6 +159,7 @@ function createBreeders(cb) {
           locations[2],
           "Service",
           "A Miami based service animal bredding service that will help find you a best friend to help you with your everyday needs",
+          "",
           callback
         );
       },
@@ -166,6 +170,7 @@ function createBreeders(cb) {
           locations[3],
           "Hunting",
           "Here at Grovers, we breed the best of the best of hunting dogs that will catch what you kill, guaranteed.",
+          "",
           callback
         );
       },
@@ -176,6 +181,7 @@ function createBreeders(cb) {
           locations[1],
           "Showdog",
           "Is Westminster in your sights? Well look no further, Joanne and associates will get your dog show ready in no time!",
+          "",
           callback
         );
       },
@@ -186,6 +192,7 @@ function createBreeders(cb) {
           locations[4],
           "Protection",
           "We breed only the best protection dogs this side of the Mississippi. Consider these animals as your personal form of furry secret service",
+          "",
           callback
         );
       },
@@ -421,7 +428,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Kiera",
-          breeds[(1, 2, 3)],
+          breeds[1],
           breeders[0],
           locations[0],
           "A well trained and loving dog. This dog cares more about you than anything else in the world",
@@ -436,7 +443,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Dexter",
-          breeds[(5, 7)],
+          breeds[5],
           breeders[1],
           locations[1],
           "A quirky but well-mannered dog.",
@@ -451,7 +458,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Shadow",
-          breeds[(4, 6, 8)],
+          breeds[4],
           breeders[3],
           locations[3],
           "One of the sharpest dogs out there.",
@@ -496,7 +503,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Mochi",
-          breeds[(11, 15)],
+          breeds[11],
           breeders[0],
           locations[0],
           "One of the best family dogs you will meet",
@@ -511,7 +518,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Ninja",
-          breeds[(12, 14)],
+          breeds[12],
           breeders[4],
           locations[4],
           "This dog is the definition of a chill dog",
@@ -541,7 +548,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Otis",
-          breeds[(16, 18)],
+          breeds[16],
           breeders[1],
           locations[1],
           "This dog is quite the smart cookie",
@@ -571,7 +578,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Buckley",
-          breeds[(3, 7)],
+          breeds[15],
           breeders[0],
           locations[0],
           "Don't let the size fool you, this dog is the package",
@@ -586,7 +593,7 @@ function createDogs(cb) {
       function (callback) {
         dogCreate(
           "Champ",
-          breeds[(9, 14)],
+          breeds[8],
           breeders[1],
           locations[1],
           "Aptly named, this dog will be the champion in your life",

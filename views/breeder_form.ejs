@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="detail">
+        <h1><%= title %></h1>
+        <div class="form">
+          <form action="" method="POST">
+            <label for="name">Breeder Name</label>
+            <input type="text" name="name" id="name">
+            <label for="established">Established</label>
+            <input type="date" name="established" id="established">
+            <label for="location">Location</label>
+            <select type="select" id="location" name='location' placeholder='Select Location' required='true'>
+              <% locations.sort(function(a,b){ let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+              <% locations.forEach(location => { %>
+        
+                  <option value="<%= location._id %>"><%= location.name %></option>
+              <% }) %>
+            </select>
+            <label for="specialty">Specialty</label>
+            <select type="text" name="specialty" id="specialty">
+              <option value="Service">Service</option>
+              <option value="Hunting">Hunting</option>
+              <option value="Protection">Protection</option>
+              <option value="Showdog">Showdog</option>
+              <option value="Pet">Pet</option>
+              <option value="Rescue">Rescue</option>
+              </select>
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description"></textarea>
+            <label for="photoURL">Photo URL</label>
+            <input type="text" name="photoURL" id="photoURL">
+            <button>Submit</button>
+          </form>
+          <ul>
+            <% if (errors){ %>
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

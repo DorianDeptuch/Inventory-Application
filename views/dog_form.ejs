@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="detail">
+        <h1><%= title %></h1>
+        <div class="form">
+          <form action="" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            <label for="breeder">Breeder</label>
+            <select type="select" id="breeder" name='breeder' placeholder='Select Breeder' required='true'>
+              <% breeders.sort(function(a,b){ let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+              <% breeders.forEach(breeder => { %>
+        
+                  <option value="<%= breeder._id %>"><%= breeder.name %></option>
+              <% }) %>
+            </select>
+            <label for="breed">Breed</label>
+            <select type="select" id="breed" name='breed' placeholder='Select Breed' required='true'>
+              <% breeds.sort(function(a,b){ let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+              <% breeds.forEach(breed => { %>
+        
+                  <option value="<%= breed._id %>"><%= breed.name %></option>
+              <% }) %>
+            </select>
+            <label for="location">Location</label>
+            <select type="select" id="location" name='location' placeholder='Select Location' required='true'>
+              <% locations.sort(function(a,b){ let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+              <% locations.forEach(location => { %>
+        
+                  <option value="<%= location._id %>"><%= location.name %></option>
+              <% }) %>
+            </select>
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description"></textarea>
+            <label for="temperment">Temperment</label>
+            <select type="select" id="temperment" name='temperment' placeholder='Select Temperment'>
+              <option value="Assertive">Assertive</option>
+              <option value="Neutral">Neutral</option>
+              <option value="Passive">Passive</option>
+            </select>
+            <label for="neuteredSpayed">Neutered/Spayed</label>
+            <select type="select" id="neuteredSpayed" name="neuteredSpayed" placeholder="Is this dog neutered or spayed?">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+            <label for="age">Age (in years)</label>
+             <input type="number" name="age" id="age">
+            <label for="sex">Sex</label>
+            <select name="sex" id="sex">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <label for="adoptionFee">Adoption Fee</label>
+            <input type="number" name="adoptionFee" id="adoptionFee">
+            <button>Submit</button>
+          </form>
+          <ul>
+            <% if (errors){ %>
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

@@ -29,6 +29,7 @@ var DogSchema = new Schema({
       "While we're sure your dog is worth that much to you, we'd like to keep prices reasonable for our customers",
     ],
   },
+  photoURL: { type: String },
 });
 
 DogSchema.virtual("url").get(function () {

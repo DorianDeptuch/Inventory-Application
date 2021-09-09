@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="list ">
+        <h1><%= title %></h1>
+        <div class="content">
+          <ul class="list_container">
+            <% if (breeder_list.length > 0) { %>
+            <% breeder_list.sort(function(a,b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return(textA < textB) ? -1 : (textA > textB) ? 1 : 0;}) %>
+            <% breeder_list.forEach(breeder => { %>
+            <li>
+              <div class="li_card">
+                <a href="<%= breeder.url %>">
+                  <img src="https://imgur.com/GEfMuTp.jpg" alt="Breeder Avatar Card">
+                </a>
+                <a href="<%= breeder.url %>">
+                  <p><%= breeder.name %></p>
+                </a>
+                <p>Specialty: <%= breeder.specialty %></p>
+                
+              </div>
+            </li>
+            <% }) %> <% } else { %>
+            <p>
+              There are no breeders available right now. Check again soon!
+            </p>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="delete">
+        <h1><%= title %></h1>
+        <div class="content">
+            <div class="delete_card">
+              <a href="<%= dog.url %>">
+                <img src="https://imgur.com/M2Q1Zv2.jpg" alt="Dog Avatar">
+              </a>
+              <a href="<%= dog.url %>">
+                <h4><%= dog.name %></h4>
+              </a>
+              <p><%= dog.description %></p>
+            </div>
+          <div class="strong_div">
+            <strong>Do you really want to delete this dog?</strong>
+          </div>
+          <form action="" method="POST">
+            <input type="hidden" id="dogid" name="dogid" required="true" value='<%= dog._id %>'>
+            <input type="text" placeholder="Enter password to delete" name="passwordid" id="passwordid" required="true">
+            <button type="submit">DELETE</button>
+          </form>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

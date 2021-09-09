@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="delete">
+        <h1><%= title %></h1>
+        <div class="content">
+         <% if (breeder_dogs.length > 0){ %>
+          <strong>Ensure the following dogs are adopted before deleting <%= breeder.name %>:</strong>
+          <div class="dogs_to_delete">
+            <% breeder_dogs.forEach(dog => { %>
+              <a class="li_container" href="<%= dog.url %>">
+                <div class="circle"></div>
+                <p><%= dog.name %></p>
+              </a>
+            <% }) %>
+          </div>
+         <% } else { %>
+          <div class="delete_card">
+            <a href="<%= breeder.url %>">
+              <img src="https://imgur.com/GEfMuTp.jpg" alt="Breeder Avatar">
+            </a>
+            <a href="<%= breeder.url %>">
+              <h4><%= breeder.name %></h4>
+            </a>
+            <p><%= breeder.description %></p>
+          </div>
+          <div class="strong_div">
+            <strong>Do you really want to delete this breeder?</strong>
+          </div>
+          <form action="" method="POST">
+            <input type="hidden" id="breederid" name="breederid" required="true" value='<%= breeder._id %>'>
+            <button type="submit">DELETE</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>
