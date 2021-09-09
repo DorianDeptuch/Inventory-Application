@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-const { Datetime } = require("luxon");
+const { DateTime } = require("luxon");
 
 var Schema = mongoose.Schema;
 
@@ -22,7 +22,7 @@ BreederSchema.virtual("url").get(function () {
 });
 
 BreederSchema.virtual("established_formatted").get(function () {
-  return Datetime.fromJSDate(this.established).toLocaleString(
+  return DateTime.fromJSDate(this.established).toLocaleString(
     DateTime.DATE_MED
   );
 });

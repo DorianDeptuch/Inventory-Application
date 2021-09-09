@@ -6,7 +6,8 @@
       <%- include("./partials/nav.ejs") %>
       <div class="detail">
         <h1><%= location.name %></h1>
-        <img class="avatar" src="https://imgur.com/WWDiI4K.jpg" alt="Location Avatar">
+        <img src="<%= location.photoURL != 'undefined' ? location.photoURL : 'https://imgur.com/WWDiI4K.jpg' %>" alt="Location Avatar">
+
         <div class="words">
           <div class="content">
             <p><%= location.description%></p>
@@ -20,7 +21,9 @@
               <% location_dogs.forEach(dog => { %>
                 <li>
                   <a class="li_container" href="<%= dog.url %>">
-                    <div class="circle"></div>
+                    <div class="circle">
+                      <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
+                    </div>
                     <p><%= dog.name %></p>
                   </a>
               </li>

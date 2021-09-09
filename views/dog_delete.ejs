@@ -9,7 +9,8 @@
         <div class="content">
             <div class="delete_card">
               <a href="<%= dog.url %>">
-                <img src="https://imgur.com/M2Q1Zv2.jpg" alt="Dog Avatar">
+              <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
+
               </a>
               <a href="<%= dog.url %>">
                 <h4><%= dog.name %></h4>

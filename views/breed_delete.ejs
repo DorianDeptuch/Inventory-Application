@@ -12,7 +12,9 @@
           <div class="dogs_to_delete">
             <% breed_dogs.forEach(dog => { %>
               <a class="li_container" href="<%= dog.url %>">
-                <div class="circle"></div>
+                <div class="circle">
+                  <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
+                </div>
                 <p><%= dog.name %></p>
               </a>
             <% }) %>
@@ -20,7 +22,7 @@
          <% } else { %>
           <div class="delete_card">
             <a href="<%= breed.url %>">
-              <img src="https://imgur.com/iyAuIuz.jpg" alt="Breed Avatar">
+              <img src="<%= breed.photoURL != 'undefined' ? breed.photoURL : 'https://imgur.com/iyAuIuz.jpg' %>" alt="Breed Avatar">
             </a>
             <a href="<%= breed.url %>">
               <h4><%= breed.name %></h4>

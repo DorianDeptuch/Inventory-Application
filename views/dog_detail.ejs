@@ -6,7 +6,8 @@
       <%- include("./partials/nav.ejs") %>
       <div class="detail">
         <h1><%= dog.name %></h1>
-        <img class="avatar" src="https://imgur.com/M2Q1Zv2.jpg" alt="Breeder Avatar">
+        <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
+
         <div class="words">
   
           <div class="content">

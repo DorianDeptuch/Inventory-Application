@@ -85,11 +85,11 @@ exports.breeder_create_post = [
   body("location").trim().isLength({ min: 1 }).escape(),
   body("specialty").trim().isLength({ min: 1 }).escape(),
   body("description").trim().isLength({ min: 1 }).escape(),
-  body("photoURL", "Invalid File")
-    .trim()
-    .isLength({ min: 1 })
-    .escape()
-    .optional({ checkFalsy: true }),
+  // body("photoURL", "Invalid File")
+  //   .trim()
+  //   .isLength({ min: 1 })
+  //   // .escape()
+  //   .optional({ checkFalsy: true }),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -98,9 +98,9 @@ exports.breeder_create_post = [
       name: req.body.name,
       established: req.body.established,
       location: req.body.location,
-      // specialty: req.body.specialty,
+      specialty: req.body.specialty,
       description: req.body.description,
-      photoURL: req.body.photoURL, //|| defaultBreederPhoto,
+      photoURL: req.body.photoURL,
     });
 
     if (!errors.isEmpty()) {
@@ -245,11 +245,11 @@ exports.breeder_update_post = [
   body("location").trim().isLength({ min: 1 }).escape(),
   body("specialty").trim().isLength({ min: 1 }).escape(),
   body("description").trim().isLength({ min: 1 }).escape(),
-  body("photoURL", "Invalid File")
-    .trim()
-    .isLength({ min: 1 })
-    .escape()
-    .optional({ checkFalsy: true }),
+  // body("photoURL", "Invalid File")
+  //   .trim()
+  //   .isLength({ min: 1 })
+  //   .escape()
+  //   .optional({ checkFalsy: true }),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -267,36 +267,23 @@ exports.breeder_update_post = [
     if (!errors.isEmpty()) {
       // console.log(res.status(400).json({ errors: errors.array() }));
       res.render("breeder_form", {
-        title: "Create a Breeder",
+        title: "Update Breeder",
         breeder,
         errors: errors.array(),
       });
       return;
     } else {
-      Breeder.findOne({ name: req.body.name }).exec(function (
-        err,
-        found_breeder
-      ) {
-        if (err) {
-          return next(err);
+      Breeder.findByIdAndUpdate(
+        req.params.id,
+        breeder,
+        {},
+        function (err, thebreeder) {
+          if (err) {
+            return next(err);
+          }
+          res.redirect(thebreeder.url);
         }
-
-        if (found_breeder) {
-          res.redirect(found_breeder.url);
-        } else {
-          Breeder.findByIdAndUpdate(
-            req.params.id,
-            breeder,
-            {},
-            function (err, thebreeder) {
-              if (err) {
-                return next(err);
-              }
-              res.redirect(thebreeder.url);
-            }
-          );
-        }
-      });
+      );
     }
   },
 ];

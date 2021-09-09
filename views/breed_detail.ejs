@@ -6,7 +6,7 @@
       <%- include("./partials/nav.ejs") %>
       <div class="detail">
         <h1><%= breed.name %></h1>
-        <img class="avatar" src="https://imgur.com/iyAuIuz.jpg" alt="Breed Avatar">
+        <img src="<%= breed.photoURL != 'undefined' ? breed.photoURL : 'https://imgur.com/iyAuIuz.jpg' %>" alt="Breed Avatar">
         <div class="words">
           <div class="content">
             <p><strong>Size</strong>: <%= breed.size%></p>
@@ -21,7 +21,9 @@
               <% breed_dogs.forEach(dog => { %>
                 <li>
                     <a class="li_container" href="<%= dog.url %>">
-                      <div class="circle"></div>
+                      <div class="circle">
+                        <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
+                      </div>
                       <p><%= dog.name %></p>
                     </a>
                 </li>

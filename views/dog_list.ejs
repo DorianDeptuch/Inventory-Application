@@ -14,7 +14,7 @@
             <li>
               <div class="li_card">
                 <a href="<%= dog.url %>">
-                  <img src="https://imgur.com/M2Q1Zv2.jpg" alt="Breeder Avatar Card">
+                  <img src="<%= dog.photoURL != 'undefined' ? dog.photoURL : 'https://imgur.com/M2Q1Zv2.jpg' %>" alt="Dog Avatar">
                 </a>
                 <a href="<%= dog.url %>">
                   <p><%= dog.name %></p>

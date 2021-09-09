@@ -34,7 +34,7 @@ exports.index = function (req, res) {
 };
 
 exports.dog_list = function (req, res, next) {
-  Dog.find({}, "name breeder")
+  Dog.find({}, "name breeder photoURL")
     .populate("breeder")
     .exec(function (err, list_dogs) {
       if (err) {
@@ -155,6 +155,7 @@ exports.dog_create_post = [
       age: req.body.age,
       sex: req.body.sex,
       adoptionFee: req.body.adoptionFee,
+      photoURL: req.body.photoURL,
     });
 
     if (!errors.isEmpty()) {
@@ -182,12 +183,14 @@ exports.dog_create_post = [
             breeders: results.breeders,
             breeds: results.breeds,
             locations: results.locations,
-            description: results.description,
-            temperment: results.temperment,
-            neuteredSpayed: results.neuteredSpayed,
-            age: results.age,
-            sex: results.sex,
-            adoptionFee: results.adoptionFee,
+            // description: results.description,
+            // temperment: results.temperment,
+            // neuteredSpayed: results.neuteredSpayed,
+            // age: results.age,
+            // sex: results.sex,
+            // adoptionFee: results.adoptionFee,
+            // photoURL: results.photoURL,
+            dog: results.dog,
             errors: errors.array(),
           });
         }
@@ -333,6 +336,7 @@ exports.dog_update_post = [
       age: req.body.age,
       sex: req.body.sex,
       adoptionFee: req.body.adoptionFee,
+      photoURL: req.body.photoURL,
       _id: req.params.id,
     });
 
@@ -361,12 +365,14 @@ exports.dog_update_post = [
             breeders: results.breeders,
             breeds: results.breeds,
             locations: results.locations,
-            description: results.description,
-            temperment: results.temperment,
-            neuteredSpayed: results.neuteredSpayed,
-            age: results.age,
-            sex: results.sex,
-            adoptionFee: results.adoptionFee,
+            // description: results.description,
+            // temperment: results.temperment,
+            // neuteredSpayed: results.neuteredSpayed,
+            // age: results.age,
+            // sex: results.sex,
+            // adoptionFee: results.adoptionFee,
+            // photoURL: results.photoURL,
+            dog: results.dog,
             errors: errors.array(),
           });
         }

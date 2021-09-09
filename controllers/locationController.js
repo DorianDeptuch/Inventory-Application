@@ -70,14 +70,17 @@ exports.location_create_post = [
     var location = new Location({
       name: req.body.name,
       description: req.body.description,
+      photoURL: req.body.photoURL,
     });
 
     if (!errors.isEmpty()) {
       // return res.status(400).json({ errors: errors.array() });
       res.render("location_form", {
         title: "Create a Location",
-        name: req.body.name,
-        description: req.body.description,
+        // name: req.body.name,
+        // description: req.body.description,
+        // photoURL: req.body.photoURL,
+        location,
         errors: errors.array(),
       });
       return;
@@ -219,34 +222,22 @@ exports.location_update_post = [
         title: "Update Location",
         name: req.body.name,
         description: req.body.description,
+        photoURL: req.body.photoURL,
         errors: errors.array(),
       });
       return;
     } else {
-      Location.findOne({ name: req.body.name }).exec(function (
-        err,
-        found_location
-      ) {
-        if (err) {
-          return next(err);
+      Location.findByIdAndUpdate(
+        req.params.id,
+        location,
+        {},
+        function (err, thelocation) {
+          if (err) {
+            return next(err);
+          }
+          res.redirect(thelocation.url);
         }
-
-        if (found_location) {
-          res.redirect(found_location.url);
-        } else {
-          Location.findByIdAndUpdate(
-            req.params.id,
-            location,
-            {},
-            function (err, thelocation) {
-              if (err) {
-                return next(err);
-              }
-              res.redirect(thelocation.url);
-            }
-          );
-        }
-      });
+      );
     }
   },
 ];

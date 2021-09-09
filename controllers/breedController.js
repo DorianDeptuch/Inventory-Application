@@ -68,6 +68,7 @@ exports.breed_create_post = [
       name: req.body.name,
       size: req.body.size,
       description: req.body.description,
+      photoURL: req.body.photoURL,
     });
 
     if (!errors.isEmpty()) {
@@ -197,6 +198,7 @@ exports.breed_update_post = [
       name: req.body.name,
       size: req.body.size,
       description: req.body.description,
+      photoURL: req.body.photoURL,
       _id: req.params.id,
     });
 
@@ -208,27 +210,17 @@ exports.breed_update_post = [
       });
       return;
     } else {
-      Breed.findOne({ name: req.body.name }).exec(function (err, found_breed) {
-        if (err) {
-          return next(err);
+      Breed.findByIdAndUpdate(
+        req.params.id,
+        breed,
+        {},
+        function (err, thebreed) {
+          if (err) {
+            return next(err);
+          }
+          res.redirect(thebreed.url);
         }
-
-        if (found_breed) {
-          res.redirect(found_breed.url);
-        } else {
-          Breed.findByIdAndUpdate(
-            req.params.id,
-            breed,
-            {},
-            function (err, thebreed) {
-              if (err) {
-                return next(err);
-              }
-              res.redirect(thebreed.url);
-            }
-          );
-        }
-      });
+      );
     }
   },
 ];

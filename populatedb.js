@@ -61,8 +61,8 @@ function breederCreate(
   });
 }
 
-function locationCreate(name, description, cb) {
-  locationdetail = { name: name, description: description };
+function locationCreate(name, description, photoURL, cb) {
+  locationdetail = { name, description, photoURL };
 
   var location = new Location(locationdetail);
 
@@ -88,19 +88,21 @@ function dogCreate(
   age,
   sex,
   adoptionFee,
+  photoURL,
   cb
 ) {
   dogdetail = {
-    name: name,
-    breed: breed,
-    breeder: breeder,
-    location: location,
-    description: description,
-    temperment: temperment,
-    neuteredSpayed: neuteredSpayed,
-    age: age,
-    sex: sex,
-    adoptionFee: adoptionFee,
+    name,
+    breed,
+    breeder,
+    location,
+    description,
+    temperment,
+    neuteredSpayed,
+    age,
+    sex,
+    adoptionFee,
+    photoURL,
   };
   if (neuteredSpayed != false) dogdetail.neuteredSpayed = neuteredSpayed;
 
@@ -116,14 +118,13 @@ function dogCreate(
   });
 }
 
-function breedCreate(name, size, description, cb) {
+function breedCreate(name, size, description, photoURL, cb) {
   breeddetail = {
-    name: name,
-    size: size,
-    description: description,
+    name,
+    size,
+    description,
+    photoURL,
   };
-  // if (due_back != false) breeddetail.due_back = due_back
-  // if (status != false) breeddetail.status = status
 
   var breed = new Breed(breeddetail);
   breed.save(function (err) {
@@ -148,7 +149,7 @@ function createBreeders(cb) {
           locations[0],
           "Pet",
           "A Southern California Based Dog Breeder That Provides The Very Best Pets To Dedicated Dog Owners Throughout The US And Beyond. ",
-          "",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2020/03/12093336/AdobeStock_268126142.jpg",
           callback
         );
       },
@@ -159,7 +160,7 @@ function createBreeders(cb) {
           locations[2],
           "Service",
           "A Miami based service animal bredding service that will help find you a best friend to help you with your everyday needs",
-          "",
+          "https://media.istockphoto.com/photos/middle-aged-woman-with-mobility-issues-is-able-to-enjoy-her-garden-picture-id1172514813.jpg",
           callback
         );
       },
@@ -170,7 +171,7 @@ function createBreeders(cb) {
           locations[3],
           "Hunting",
           "Here at Grovers, we breed the best of the best of hunting dogs that will catch what you kill, guaranteed.",
-          "",
+          "https://cdn.pixabay.com/photo/2016/07/07/19/28/hunter-1503082_960_720.jpg",
           callback
         );
       },
@@ -181,7 +182,7 @@ function createBreeders(cb) {
           locations[1],
           "Showdog",
           "Is Westminster in your sights? Well look no further, Joanne and associates will get your dog show ready in no time!",
-          "",
+          "https://cdn.pixabay.com/photo/2015/04/20/21/40/dog-show-732292_960_720.jpg",
           callback
         );
       },
@@ -192,7 +193,7 @@ function createBreeders(cb) {
           locations[4],
           "Protection",
           "We breed only the best protection dogs this side of the Mississippi. Consider these animals as your personal form of furry secret service",
-          "",
+          "https://cdn.pixabay.com/photo/2013/02/26/20/56/dog-86422_960_720.jpg",
           callback
         );
       },
@@ -209,6 +210,7 @@ function createLocations(cb) {
         locationCreate(
           "San Diego",
           "The climate of San Diego, California is classified as a Mediterranean climate. The basic climate features hot, sunny, and dry summers, and cooler, wetter winters. However, San Diego is much more arid than typical Mediterranean climates, and winters are still dry compared with most other zones with this type of climate. Dogs with shorter coats will do well here. Popular Breeds in the area include: Boxers, Chihuahuas, Dalmatians, Rottweilers, Pit Bulls, Pembroke Welsh Corgis, Pugs, Beagles",
+          "https://cdn.pixabay.com/photo/2010/12/17/10/45/san-diego-3727_960_720.jpg",
           callback
         );
       },
@@ -216,6 +218,7 @@ function createLocations(cb) {
         locationCreate(
           "Seattle",
           'The climate of Seattle is temperate, classified in the Mediterranean zone by the main climatic classification but some sources put the city in the oceanic zone. It has cool, wet winters and mild, relatively dry summers, covering characteristics of both. The climate is sometimes characterized as a "modified Mediterranean" climate because it is cooler and wetter than a "true" Mediterranean climate, but shares the characteristic dry summer (which has a strong influence on the region\'s vegetation). Popular breeds in this area include: Laborador Retriever, Golden Retriever, Pembroke Welsh Corgi, French Bulldog, German Shepard, Poodle, Havanese, Bernese Mountain Dog',
+          "https://cdn.pixabay.com/photo/2015/08/01/13/47/seattle-870282_960_720.jpg",
           callback
         );
       },
@@ -223,6 +226,7 @@ function createLocations(cb) {
         locationCreate(
           "Miami",
           "The climate of Miami is classified as having a tropical monsoon climate with hot and humid summers; short, warm winters; and a marked drier season in the winter. Its sea-level elevation, coastal location, position just above the Tropic of Cancer, and proximity to the Gulf Stream shape its climate. Popular breeds in this area include: Chihuahuas, Golden Retrievers, French Bulldogs, Huskies, Dachshunds, Schnauzers, Mutts, Malteses",
+          "https://cdn.pixabay.com/photo/2015/03/15/05/45/miami-beach-674068_960_720.jpg",
           callback
         );
       },
@@ -230,6 +234,7 @@ function createLocations(cb) {
         locationCreate(
           "Detroit",
           "Detroit and the rest of southeastern Michigan have a hot-summer humid continental climate which is influenced by the Great Lakes like other places in the state.  Winters are cold, with moderate snowfall and temperatures not rising above freezing on an average 44 days annually, while dropping to or below 0 °F (−18 °C) on an average 4.4 days a year; summers are warm to hot with temperatures exceeding 90 °F (32 °C) on 12 days. Popular breeds in this area include: Labradoodles, Goldendoodles, Siberian Huskies, American Pit Bull Terriers, Jack Russell Terriers",
+          "https://cdn.pixabay.com/photo/2015/10/06/17/28/detroit-974867_960_720.jpg",
           callback
         );
       },
@@ -237,6 +242,7 @@ function createLocations(cb) {
         locationCreate(
           "New York",
           "The climate of New York City features a humid subtropical variety, with parts of the city transitioning into a humid continental climate. This gives the city cold, wet winters and hot, humid summers with plentiful rainfall all year round. Popular breeds in this area include: Golden Retrievers, Pitbulls, Shih Tzus, Lab Mixes, Goldendoodles, French Bulldogs, Mutts, Malteses",
+          "https://cdn.pixabay.com/photo/2017/08/31/05/36/buildings-2699520_960_720.jpg",
           callback
         );
       },
@@ -254,6 +260,7 @@ function createBreeds(cb) {
           "Jack Russel Terrier",
           "Small",
           "Upbeat, lively, inquisitive, and friendly, the jaunty Russell Terrier was developed by England's \"Sporting Parson\" for use in foxhunts. The adorable Russell Terrier looks like a plush toy come to life but is an eager, tireless working terrier. These jaunty little fellows pack lots of personality into a compact, rectangular body standing 10 to 12 inches at the shoulder. Their dark, almond-shaped eyes and mobile V-shaped ears bring out the keenly intelligent expression'an endearing hallmark of the breed. All three coat types are mostly white with markings that are tan or black, or both. Russells move with a free, effortless gait that announces the breed's innate confidence.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12224927/Russell-Terrier-On-White-03.jpg",
           callback
         );
       },
@@ -262,6 +269,7 @@ function createBreeds(cb) {
           "German Shephard",
           "Large",
           "Generally considered dogkind's finest all-purpose worker, the German Shepherd Dog is a large, agile, muscular dog of noble character and high intelligence. Loyal, confident, courageous, and steady, the German Shepherd is truly a dog lover's delight. German Shepherd Dogs can stand as high as 26 inches at the shoulder and, when viewed in outline, presents a picture of smooth, graceful curves rather than angles. The natural gait is a free-and-easy trot, but they can turn it up a notch or two and reach great speeds. There are many reasons why German Shepherds stand in the front rank of canine royalty, but experts say their defining attribute is character: loyalty, courage, confidence, the ability to learn commands for many tasks, and the willingness to put their life on the line in defense of loved ones. German Shepherds will be gentle family pets and steadfast guardians, but, the breed standard says, there's a certain aloofness that does not lend itself to immediate and indiscriminate friendships.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12213218/German-Shepherd-on-White-00.jpg",
           callback
         );
       },
@@ -270,6 +278,7 @@ function createBreeds(cb) {
           "Rottweiler",
           "Large",
           "The Rottweiler is a robust working breed of great strength descended from the mastiffs of the Roman legions. A gentle playmate and protector within the family circle, the Rottie observes the outside world with a self-assured aloofness. A male Rottweiler will stand anywhere from 24 to 27 muscular inches at the shoulder; females run a bit smaller and lighter. The glistening, short black coat with smart rust markings add to the picture of imposing strength. A thickly muscled hindquarters powers the Rottie's effortless trotting gait. A well-bred and properly raised Rottie will be calm and confident, courageous but not unduly aggressive. The aloof demeanor these world-class guardians present to outsiders belies the playfulness, and downright silliness, that endear Rotties to their loved ones. (No one told the Rottie he's not a toy breed, so he is liable plop onto your lap for a cuddle.) Early training and socialization will harness a Rottie's territorial instincts in a positive way.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12224942/Rottweiler-On-White-10.jpg",
           callback
         );
       },
@@ -278,6 +287,7 @@ function createBreeds(cb) {
           "Siberian Husky",
           "Large",
           "Siberian Husky, a thickly coated, compact sled dog of medium size and great endurance, was developed to work in packs, pulling light loads at moderate speeds over vast frozen expanses. Sibes are friendly, fastidious, and dignified. The graceful, medium-sized Siberian Husky's almond-shaped eyes can be either brown or blue'and sometimes one of each'and convey a keen but amiable and even mischievous expression. Quick and nimble-footed, Siberians are known for their powerful but seemingly effortless gait. Tipping the scales at no more than 60 pounds, they are noticeably smaller and lighter than their burly cousin, the Alaskan Malamute. As born pack dogs, they enjoy family life and get on well with other dogs. The Sibe's innate friendliness render them indifferent watchdogs. These are energetic dogs who can't resist chasing small animals, so secure running room is a must. An attractive feature of the breed: Sibes are naturally clean, with little doggy odor.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/26155623/Siberian-Husky-standing-outdoors-in-the-winter.jpg",
           callback
         );
       },
@@ -286,6 +296,7 @@ function createBreeds(cb) {
           "Chihuahua",
           "Small",
           'The Chihuahua is a tiny dog with a huge personality. A national symbol of Mexico, these alert and amusing "purse dogs" stand among the oldest breeds of the Americas, with a lineage going back to the ancient kingdoms of pre-Columbian times. The Chihuahua is a balanced, graceful dog of terrier-like demeanor, weighing no more than 6 pounds. The rounded "apple" head is a breed hallmark. The erect ears and full, luminous eyes are acutely expressive. Coats come in many colors and patterns, and can be long or short. The varieties are identical except for coat. Chihuahuas possess loyalty, charm, and big-dog attitude. Even tiny dogs require training, and without it this clever scamp will rule your household like a little Napoleon. Compact and confident, Chihuahuas are ideal city pets. They are too small for roughhousing with kids, and special care must be taken in cold weather, but Chihuahuas are adaptable\'as long as they get lots of quality time in their preferred lap.',
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/27134650/Chihuahua-standing-in-three-quarter-view.jpg",
           callback
         );
       },
@@ -294,6 +305,7 @@ function createBreeds(cb) {
           "Shih Tzu",
           "Small",
           "That face! Those big dark eyes looking up at you with that sweet expression! It's no surprise that Shih Tzu owners have been so delighted with this little 'Lion Dog' for a thousand years. Where Shih Tzu go, giggles and mischief follow. Shi Tsu (pronounced in the West 'sheed-zoo' or 'sheet-su'; the Chinese say 'sher-zer'), weighing between 9 to 16 pounds, and standing between 8 and 11 inches, are surprisingly solid for dogs their size. The coat, which comes in many colors, is worth the time you will put into it'few dogs are as beautiful as a well-groomed Shih Tzu. Being cute is a way of life for this lively charmer. The Shih Tzu is known to be especially affectionate with children. As a small dog bred to spend most of their day inside royal palaces, they make a great pet if you live in an apartment or lack a big backyard. Some dogs live to dig holes and chase cats, but a Shih Tzu's idea of fun is sitting in your lap acting adorable as you try to watch TV.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12224329/Shih-Tzu-On-White-01.jpg",
           callback
         );
       },
@@ -302,6 +314,7 @@ function createBreeds(cb) {
           "Welsh Corgi",
           "Small",
           "Among the most agreeable of all small housedogs, the Pembroke Welsh Corgi is a strong, athletic, and lively little herder who is affectionate and companionable without being needy. They are one the world's most popular herding breeds. At 10 to 12 inches at the shoulder and 27 to 30 pounds, a well-built male Pembroke presents a big dog in a small package. Short but powerful legs, muscular thighs, and a deep chest equip him for a hard day's work. Built long and low, Pembrokes are surprisingly quick and agile. They can be red, sable, fawn, and black and tan, with or without white markings. The Pembroke is a bright, sensitive dog who enjoys play with his human family and responds well to training. As herders bred to move cattle, they are fearless and independent. They are vigilant watchdogs, with acute senses and a 'big dog' bark. Families who can meet their bold but kindly Pembroke's need for activity and togetherness will never have a more loyal, loving pet.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/25204906/Day1_Dec13_52.jpg",
           callback
         );
       },
@@ -310,6 +323,7 @@ function createBreeds(cb) {
           "French Bulldog",
           "Small",
           "The one-of-a-kind French Bulldog, with his large bat ears and even disposition, is one of the world's most popular small-dog breeds, especially among city dwellers. The Frenchie is playful, alert, adaptable, and completely irresistible. The French Bulldog resembles a Bulldog in miniature, except for the large, erect 'bat ears' that are the breed's trademark feature. The head is large and square, with heavy wrinkles rolled above the extremely short nose. The body beneath the smooth, brilliant coat is compact and muscular. The bright, affectionate Frenchie is a charmer. Dogs of few words, Frenchies don't bark much'but their alertness makes them excellent watchdogs. They happily adapt to life with singles, couples, or families, and do not require a lot of outdoor exercise. They get on well with other animals and enjoy making new friends of the human variety. It is no wonder that city folk from Paris to Peoria swear by this vastly amusing and companionable breed.",
+          "https://www.petplan.co.uk/images/breed-info/french-bulldog/Vital-Stats_French-Bulldog-Petplan.jpg",
           callback
         );
       },
@@ -318,6 +332,7 @@ function createBreeds(cb) {
           "Poodle",
           "Medium",
           'Whether Standard, Miniature, or Toy, and either black, white, or apricot, the Poodle stands proudly among dogdom’s true aristocrats. Beneath the curly, low-allergen coat is an elegant athlete and companion for all reasons and seasons. Poodles come in three size varieties: Standards should be more than 15 inches tall at the shoulder; Miniatures are 15 inches or under; Toys stand no more than 10 inches. All three varieties have the same build and proportions. At dog shows, Poodles are usually seen in the elaborate Continental Clip. Most pet owners prefer the simpler Sporting Clip, in which the coat is shorn to follow the outline of the squarely built, smoothly muscled body. Forget those old stereotypes of Poodles as sissy dogs. Poodles are eager, athletic, and wickedly smart "real dogs" of remarkable versatility. The Standard, with his greater size and strength, is the best all-around athlete of the family, but all Poodles can be trained with great success.',
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/29231450/Poodle-Standard-Gray-On-White-Standing.jpg",
           callback
         );
       },
@@ -326,6 +341,7 @@ function createBreeds(cb) {
           "Laborador Retriever",
           "Large",
           "The sweet-faced, lovable Labrador Retriever is America's most popular dog breed. Labs are friendly, outgoing, and high-spirited companions who have more than enough affection to go around for a family looking for a medium-to-large dog. The sturdy, well-balanced Labrador Retriever can, depending on the sex, stand from 21.5 to 24.5 inches at the shoulder and weigh between 55 to 80 pounds. The dense, hard coat comes in yellow, black, and a luscious chocolate. The head is wide, the eyes glimmer with kindliness, and the thick, tapering 'otter tail' seems to be forever signaling the breed's innate eagerness. Labs are famously friendly. They are companionable housemates who bond with the whole family, and they socialize well with neighbor dogs and humans alike. But don't mistake his easygoing personality for low energy: The Lab is an enthusiastic athlete that requires lots of exercise, like swimming and marathon games of fetch, to keep physically and mentally fit.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12231410/Labrador-Retriever-On-White-01.jpg",
           callback
         );
       },
@@ -334,6 +350,7 @@ function createBreeds(cb) {
           "Dachshund",
           "Small",
           "The famously long, low silhouette, ever-alert expression, and bold, vivacious personality of the Dachshund have made him a superstar of the canine kingdom. Dachshunds come in two sizes and in three coat types of various colors and patterns. The word 'icon' is terribly overworked, but the Dachshund'with his unmistakable long-backed body, little legs, and big personality'is truly an icon of purebred dogdom. Dachshunds can be standard-sized (usually 16 to 32 pounds) or miniature (11 pounds or under), and come in one of three coat types: smooth, wirehaired, or longhaired. Dachshunds aren't built for distance running, leaping, or strenuous swimming, but otherwise these tireless hounds are game for anything. Smart and vigilant, with a big-dog bark, they make fine watchdogs. Bred to be an independent hunter of dangerous prey, they can be brave to the point of rashness, and a bit stubborn, but their endearing nature and unique look has won millions of hearts the world over.",
+          "https://www.dogtime.com/assets/uploads/2011/01/file_23020_dachshund-dog-breed.jpg",
           callback
         );
       },
@@ -342,6 +359,7 @@ function createBreeds(cb) {
           "Maltese",
           "Small",
           "The tiny Maltese, 'Ye Ancient Dogge of Malta,' has been sitting in the lap of luxury since the Bible was a work in progress. Famous for their show-stopping, floor-length coat, Maltese are playful, charming, and adaptable toy companions. Maltese are affectionate toy dogs weighing less than seven pounds, covered by a long, straight, silky coat. Beneath the all-white mantle is a compact body moving with a smooth and effortless gait. The overall picture depicts free-flowing elegance and balance. The irresistible Maltese face'with its big, dark eyes and black gumdrop nose'can conquer the most jaded sensibility. Despite their aristocratic bearing, Maltese are hardy and adaptable pets. They make alert watchdogs who are fearless in a charming toy-dog way, and they are game little athletes on the agility course. Maltese are low-shedding, long-lived, and happy to make new friends of all ages. Sometimes stubborn and willful, they respond well to rewards-based training.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/15120910/Maltese-standing-in-three-quarter-view-on-a-white-background.jpg",
           callback
         );
       },
@@ -350,6 +368,7 @@ function createBreeds(cb) {
           "Cocker Spaniel",
           "Small",
           "The merry and frolicsome Cocker Spaniel, with his big, dreamy eyes and impish personality, is one of the world's best-loved breeds. They were developed as hunting dogs, but Cockers gained their wide popularity as all-around companions. Those big, dark eyes; that sweet expression; those long, lush ears that practically demand to be touched'no wonder the Cocker spent years as America's most popular breed. The Cocker is the AKC's smallest sporting spaniel, standing about 14 to 15 inches. The coat comes in enough colors and patterns to please any taste. The well-balanced body is sturdy and solid, and these quick, durable gundogs move with a smooth, easy gait. Cockers are eager playmates for kids and are easily trained as companions and athletes. They are big enough to be sporty, but compact enough to be portable. A Cocker in full coat rewards extra grooming time by being the prettiest dog on the block. These energetic sporting dogs love playtime and brisk walks.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12233734/English-Cocker-Spaniel-On-White-01.jpg",
           callback
         );
       },
@@ -358,6 +377,7 @@ function createBreeds(cb) {
           "Saint Bernard",
           "Extra-Large",
           "The Saint Bernard does not rank very high in AKC registrations, but the genial giant of the Swiss Alps is nonetheless among the world's most famous and beloved breeds. Saints are famously watchful and patient 'nanny dogs' for children. Not ranked particularly high in AKC registrations, this genial giant is nonetheless among the world's most famous and beloved breeds. The Saint's written standard abounds with phrases like 'very powerful,' 'extraordinarily muscular,' 'imposing,' and 'massive.' A male stands a minimum 27.5 inches at the shoulder; females will be smaller and more delicately built. The huge head features a wrinkled brow, a short muzzle, and dark eyes, combining to give Saints the intelligent, friendly expression that was such a welcome sight to stranded Alpine travelers.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12224843/Saint-Bernard-On-White-01.jpg",
           callback
         );
       },
@@ -366,6 +386,7 @@ function createBreeds(cb) {
           "Boston Terrier",
           "Small",
           "The Boston Terrier is a lively little companion recognized by his tight tuxedo jacket, sporty but compact body, and the friendly glow in his big, round eyes. His impeccable manners have earned him the nickname 'The American Gentleman.' Boston Terriers are compact, short-tailed, well-balanced little dogs weighing no more than 25 pounds. The stylish 'tuxedo' coat can be white and either black, brindle, or seal (dark brown). The head is square, the muzzle is short, and the large, round eyes can shine with kindness, curiosity, or mischief. Ever alert to their surroundings, Bostons move with a jaunty, rhythmic step. It's a safe bet that a breed named for a city'the Havanese or Brussels Griffon, for instance'will make an excellent urban pet. Bostons are no exception: they are sturdy but portable, people-oriented, and always up for a brisk walk to the park or outdoor cafe. A bright dog with a natural gift for comedy, the dapper Bostonian is a steady source of smiles.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12235803/Boston-Terrier-On-White-03.jpg",
           callback
         );
       },
@@ -374,6 +395,7 @@ function createBreeds(cb) {
           "Golden Retriever",
           "Large",
           "The Golden Retriever, an exuberant Scottish gundog of great beauty, stands among America's most popular dog breeds. They are serious workers at hunting and field work, as guides for the blind, and in search-and-rescue, enjoy obedience and other competitive events, and have an endearing love of life when not at work. The Golden Retriever is a sturdy, muscular dog of medium size, famous for the dense, lustrous coat of gold that gives the breed its name. The broad head, with its friendly and intelligent eyes, short ears, and straight muzzle, is a breed hallmark. In motion, Goldens move with a smooth, powerful gait, and the feathery tail is carried, as breed fanciers say, with a 'merry action.' The most complete records of the development of the Golden Retriever are included in the record books that were kept from 1835 until about 1890 by the gamekeepers at the Guisachan (pronounced Gooeesicun) estate of Lord Tweedmouth at Inverness-Shire, Scotland. These records were released to public notice in Country Life in 1952, when Lord Tweedmouth's great-nephew, the sixth Earl of Ilchester, historian and sportsman, published material that had been left by his ancestor. They provided factual confirmation to the stories that had been handed down through generations. Goldens are outgoing, trustworthy, and eager-to-please family dogs, and relatively easy to train. They take a joyous and playful approach to life and maintain this puppyish behavior into adulthood. These energetic, powerful gundogs enjoy outdoor play. For a breed built to retrieve waterfowl for hours on end, swimming and fetching are natural pastimes.",
+          "https://www.dogtime.com/assets/uploads/2011/01/file_22980_golden-retriever.jpg",
           callback
         );
       },
@@ -382,6 +404,7 @@ function createBreeds(cb) {
           "Pitbull",
           "Large",
           "The American Staffordshire Terrier, known to their fans as AmStaffs, are smart, confident, good-natured companions. Their courage is proverbial. A responsibly bred, well-socialized AmStaff is a loyal, trustworthy friend to the end. AmStaffs are stocky, muscular bull-type terriers standing 17 to 19 inches at the shoulder. The head is broad, the jaws well defined, the cheekbones pronounced, and the dark, round eyes are set wide apart. AmStaff movement is agile and graceful, with a springy gait that advertises the breed's innate confidence. The stiff, glossy coat comes in many colors and patterns. AmStaffers describe their dogs as keenly aware of their surroundings, game for anything, and lovable 'personality dogs' around the house. AmStaffs like mental and physical challenges. They are highly trainable, as their many forays into showbiz suggest. When acquiring an AmStaff, there's only one way to go: Do your homework and find a responsible AKC breeder.",
+          "https://www.dogtime.com/assets/uploads/2011/01/file_23052_pitbull-dog-breed-pittie.jpg",
           callback
         );
       },
@@ -390,6 +413,7 @@ function createBreeds(cb) {
           "Boxer",
           "Medium",
           "Loyalty, affection, intelligence, work ethic, and good looks: Boxers are the whole doggy package. Bright and alert, sometimes silly, but always courageous, the Boxer has been among America's most popular dog breeds for a very long time. A well-made Boxer in peak condition is an awesome sight. A male can stand as high as 25 inches at the shoulder; females run smaller. Their muscles ripple beneath a short, tight-fitting coat. The dark brown eyes and wrinkled forehead give the face an alert, curious look. The coat can be fawn or brindle, with white markings. Boxers move like the athletes they are named for: smooth and graceful, with a powerful forward thrust. Boxers are upbeat and playful. Their patience and protective nature have earned them a reputation as a great dog with children. They take the jobs of watchdog and family guardian seriously and will meet threats fearlessly. Boxers do best when exposed to a lot of people and other animals in early puppyhood.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/17154200/Boxer.1.jpg",
           callback
         );
       },
@@ -398,6 +422,7 @@ function createBreeds(cb) {
           "Australian Shepherd",
           "Medium",
           "The Australian Shepherd, a lean, tough ranch dog, is one of those 'only in America' stories: a European breed perfected in California by way of Australia. Fixtures on the rodeo circuit, they are closely associated with the cowboy life. The Australian Shepherd, the cowboy's herding dog of choice, is a medium-sized worker with a keen, penetrating gaze in the eye. Aussie coats offer different looks, including merle (a mottled pattern with contrasting shades of blue or red). In all ways, they're the picture of rugged and agile movers of stock. Aussies exhibit an irresistible impulse to herd, anything: birds, dogs, kids. This strong work drive can make Aussies too much dog for a sedentary pet owner. Aussies are remarkably intelligent, quite capable of hoodwinking an unsuspecting novice owner. In short, this isn't the pet for everyone. But if you're looking for a brainy, tireless, and trainable partner for work or sport, your search might end here.",
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13001313/Australian-Shepherd-On-White-05.jpg",
           callback
         );
       },
@@ -422,6 +447,7 @@ function createDogs(cb) {
           1,
           "Male",
           300,
+          "https://dogtime.com/assets/uploads/gallery/jack-russel-terrier-dog-breed-pictures/2-face.jpg",
           callback
         );
       },
@@ -437,12 +463,13 @@ function createDogs(cb) {
           2,
           "Female",
           500,
+          "https://thehappypuppysite.com/wp-content/uploads/2019/02/gerberian-shepsky.jpg",
           callback
         );
       },
       function (callback) {
         dogCreate(
-          "Dexter",
+          "Rosie",
           breeds[5],
           breeders[1],
           locations[1],
@@ -452,12 +479,13 @@ function createDogs(cb) {
           3,
           "Female",
           50,
+          "https://dogtime.com/assets/uploads/gallery/shih-tzu-dog-breed-pictures/shih-tzu-breed-picture-1.jpg",
           callback
         );
       },
       function (callback) {
         dogCreate(
-          "Shadow",
+          "Nova",
           breeds[4],
           breeders[3],
           locations[3],
@@ -467,12 +495,13 @@ function createDogs(cb) {
           2,
           "Female",
           400,
+          "https://www.loveyourdog.com/wp-content/uploads/2020/04/Chihuahua-Relaxing-Indoors.jpg",
           callback
         );
       },
       function (callback) {
         dogCreate(
-          "Nova",
+          "Shadow",
           breeds[9],
           breeders[2],
           locations[2],
@@ -482,6 +511,7 @@ function createDogs(cb) {
           4,
           "Male",
           250,
+          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/labrador-royalty-free-image-1597496746.jpg",
           callback
         );
       },
@@ -497,6 +527,7 @@ function createDogs(cb) {
           0,
           "Female",
           300,
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/07143601/Dachshund-laying-down-in-the-grass.jpg",
           callback
         );
       },
@@ -512,6 +543,7 @@ function createDogs(cb) {
           7,
           "Male",
           100,
+          "https://thehappypuppysite.com/wp-content/uploads/2019/03/Maltese-Lifespan-long.jpg",
           callback
         );
       },
@@ -527,6 +559,7 @@ function createDogs(cb) {
           5,
           "Male",
           150,
+          "https://i.pinimg.com/originals/dc/0c/fd/dc0cfd0763d6346a6954d3f078caedd2.jpg",
           callback
         );
       },
@@ -542,6 +575,7 @@ function createDogs(cb) {
           1,
           "Male",
           100,
+          "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/19181856/Saint-Bernard-laying-down-in-the-grass.jpg",
           callback
         );
       },
@@ -557,6 +591,7 @@ function createDogs(cb) {
           2,
           "Female",
           350,
+          "https://www.petmd.com/sites/default/files/2020-11/picture-of-american-pitt-bull-terrier.jpg",
           callback
         );
       },
@@ -572,6 +607,7 @@ function createDogs(cb) {
           0,
           "Female",
           200,
+          "https://s36700.pcdn.co/wp-content/uploads/2019/03/Close-up-of-a-Boxer-with-tongue-out-happy-600x400.jpg.optimal.jpg",
           callback
         );
       },
@@ -587,6 +623,7 @@ function createDogs(cb) {
           2,
           "Male",
           150,
+          "https://www.petmd.com/sites/default/files/2020-11/picture-of-golden-retriever-dog_0.jpg",
           callback
         );
       },
@@ -602,6 +639,7 @@ function createDogs(cb) {
           3,
           "Male",
           450,
+          "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F37%2F2020%2F11%2F25%2FPoodle-care.jpg",
           callback
         );
       },
