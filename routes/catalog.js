@@ -28,6 +28,8 @@ router.get("/dogs", dog_controller.dog_list);
 
 router.get("/dog/:id/adopt", dog_controller.dog_adopt_get);
 
+router.get("/create", dog_controller.create_get);
+
 // router.post("/dog/:id/adopt", dog_controller.dog_adopt_post);
 
 // BREEDER ROUTES

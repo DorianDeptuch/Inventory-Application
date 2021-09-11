@@ -33,6 +33,10 @@ exports.index = function (req, res) {
   );
 };
 
+exports.create_get = function (req, res) {
+  res.render("create", { title: "Create" });
+};
+
 exports.dog_list = function (req, res, next) {
   Dog.find({}, "name breeder photoURL")
     .populate("breeder")

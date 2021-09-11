@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="wrapper">
+      <%- include("./partials/nav.ejs") %>
+      <div class="detail">
+        <h1><%= title %></h1>
+        <div class="create_index">
+          <ul>
+            <li>
+              <a href="/catalog/dog/create">
+                <div class="white-bg">
+                  <img src="https://imgur.com/M2Q1Zv2.jpg" alt="Dog Default Image">
+                 </div>
+                <p>Create new Dog</p>
+              </a>
+            </li>
+            <li>
+              <a href="/catalog/breeder/create">
+                <img src="https://imgur.com/GEfMuTp.jpg" alt="Breeder Default Image">
+                <p>Create new Breeder</p>
+              </a>
+            </li>
+            <li>
+              <a href="/catalog/breed/create">
+                <img src="https://imgur.com/iyAuIuz.jpg" alt="Breed Default Image">
+                <p>Create new Breed</p>
+              </a>
+            </li>
+            <li>
+              <a href="/catalog/location/create">
+                <img src="https://imgur.com/WWDiI4K.jpg" alt="Location Default Image">
+                <p>Create new Location</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <%- include("./partials/footer.ejs") %>
+    </div>
+  </body>
+</html>
