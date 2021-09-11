@@ -148,6 +148,10 @@ exports.dog_create_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
+    if (req.body.photoURL == "") {
+      req.body.photoURL = "https://imgur.com/M2Q1Zv2.jpg";
+    }
+
     var dog = new Dog({
       name: req.body.name,
       breeder: req.body.breeder,

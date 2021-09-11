@@ -64,6 +64,10 @@ exports.breed_create_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
+    if (req.body.photoURL == "") {
+      req.body.photoURL = "https://imgur.com/iyAuIuz.jpg";
+    }
+
     var breed = new Breed({
       name: req.body.name,
       size: req.body.size,

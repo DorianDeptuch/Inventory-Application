@@ -67,6 +67,10 @@ exports.location_create_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
+    if (req.body.photoURL == "") {
+      req.body.photoURL = "https://imgur.com/WWDiI4K.jpg";
+    }
+
     var location = new Location({
       name: req.body.name,
       description: req.body.description,

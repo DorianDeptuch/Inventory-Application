@@ -94,6 +94,10 @@ exports.breeder_create_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
+    if (req.body.photoURL == "") {
+      req.body.photoURL = "https://imgur.com/GEfMuTp.jpg";
+    }
+
     var breeder = new Breeder({
       name: req.body.name,
       established: req.body.established,
