@@ -4,7 +4,7 @@
 This project was done as part of [The Odin Project](https://www.theodinproject.com)'s Foundation Course.
 
 ## Live Preview
-[https://inventory-application-90210.herokuapp.com/catalog/dogs](https://inventory-application-90210.herokuapp.com/catalog/dogs)
+[https://inventory-application-90210.herokuapp.com](https://inventory-application-90210.herokuapp.com)
 
 ## Technologies Used
 * HTML5
