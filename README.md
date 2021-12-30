@@ -1,8 +1,6 @@
 # Inventory-Application
 
 
-An implementation of the classic Rock, Paper, Scissors game using HTML, CSS, and Javascript.
-
 This project was done as part of [The Odin Project](https://www.theodinproject.com)'s Foundation Course.
 
 ## Live Preview
